@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
 import Navbar from './components/navbar'
-import Input from './components/input'
 import Habits from './components/habits'
 
 class app extends Component {
@@ -37,29 +36,25 @@ class app extends Component {
     this.setState({ habits });
   };
 
-  addItem = () => {
-    const habits = [...this.state.habits];
-    const input = document.querySelector('#input-item');
-    const habit = { id: Math.random().toString(36).substr(2, 9), name: input.value.charAt(0).toUpperCase() + input.value.slice(1), count: 0 };
-    habits.push(habit);
-    console.log(habits);
+  handleAdd = (name) => {
+    const habits = [...this.state.habits, { id: Date.now(), name: name.charAt(0).toUpperCase() + name.slice(1), count: 0 }];
     this.setState({ habits });
-
-    input.value = "";
   }
 
 
   handleReset = () => {
-    const habits = this.state.habits;
-    habits.forEach(habit => habit.count = 0);
+    const habits = this.state.habits.map(habit => {
+      habit.count = 0;
+      return habit;
+    })
     this.setState({ habits });
   }
 
   render() {
     return (
       <>
-        <Navbar totalCount={this.state.habits.filter(item => item.count !== 0).length} />
-        <Habits habits={this.state.habits} onReset={this.handleReset} onAdd={this.addItem} onIncrement={this.handleIncrement} onDecrement={this.handleDecrement} onDelete={this.handleDelete} />
+        <Navbar totalCount={this.state.habits.filter(item => item.count > 0).length} />
+        <Habits habits={this.state.habits} onReset={this.handleReset} onAdd={this.handleAdd} onIncrement={this.handleIncrement} onDecrement={this.handleDecrement} onDelete={this.handleDelete} />
       </>
     );
   }

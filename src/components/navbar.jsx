@@ -8,7 +8,7 @@ class Navbar extends Component {
                     <i className="fas fa-leaf"></i>
                 </span>
                 <h1 className="navbar-title">Habit Tracker</h1>
-                <span className="habit-count">{
+                <span className="navbar-count">{
                     this.props.totalCount
                 }</span>
             </nav>

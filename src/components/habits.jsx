@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import Habit from './habit';
+import HabitAddForm from './habitAddForm';
 
 class Habits extends Component {
-    addItem = () => { this.props.onAdd(); }
-    handleKeyDown = (event) => {
-        event.key === 'Enter' && this.addItem();
-    }
-    handleReset = () => { this.props.onReset(); }
     render() {
         return (
             <>
-                <div className="input-wrap">
-                    <input id="input-item" className="habit-input" type="text" placeholder="Habit" onKeyDown={this.handleKeyDown} />
-                    <button className="input-button" onClick={this.addItem}>Add</button>
-                </div>
+                <HabitAddForm onAdd={this.props.onAdd} />
                 <ul>
                     {
                         this.props.habits.map(habit =>
@@ -27,7 +20,7 @@ class Habits extends Component {
                         )
                     }
                 </ul>
-                <button className="reset-button" onClick={this.handleReset}>Reset All</button>
+                <button className="reset-button" onClick={this.props.onReset}>Reset All</button>
             </>
         );
     }
