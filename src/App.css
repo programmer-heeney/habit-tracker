@@ -4,6 +4,46 @@ button {
   cursor: pointer;
 }
 
+/* Navbar */
+nav {
+  display: flex;
+  align-items: center;
+  padding-left: 2em;
+  background-color: lemonchiffon;
+}
+
+.navbar-logo {
+  color: green;
+  font-size: 2rem;
+  padding-right: 0.5rem;
+}
+
+.input-wrap {
+  display: flex;
+  align-self: center;
+  padding: 2rem 2rem 0 2rem;
+}
+
+.habit-input {
+  font-size: 2rem;
+}
+
+.input-button {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 0 0.1em;
+  background-color: green;
+  color: whitesmoke;
+}
+
+.reset-button {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0 2rem;
+  background-color: green;
+  color: whitesmoke;
+}
+
 .habit {
   font-size: 2.5rem;
   padding: 0.5em;
