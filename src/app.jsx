@@ -51,7 +51,7 @@ class app extends Component {
   render() {
     return (
       <>
-        <Navbar totalCount={3} />
+        <Navbar totalCount={this.state.habits.filter(item => item.count !== 0).length} />
         <Habits habits={this.state.habits} onAdd={this.addItem} onIncrement={this.handleIncrement} onDecrement={this.handleDecrement} onDelete={this.handleDelete} />
       </>
     );
