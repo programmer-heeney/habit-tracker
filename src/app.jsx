@@ -48,11 +48,18 @@ class app extends Component {
     input.value = "";
   }
 
+
+  handleReset = () => {
+    const habits = this.state.habits;
+    habits.forEach(habit => habit.count = 0);
+    this.setState({ habits });
+  }
+
   render() {
     return (
       <>
         <Navbar totalCount={this.state.habits.filter(item => item.count !== 0).length} />
-        <Habits habits={this.state.habits} onAdd={this.addItem} onIncrement={this.handleIncrement} onDecrement={this.handleDecrement} onDelete={this.handleDelete} />
+        <Habits habits={this.state.habits} onReset={this.handleReset} onAdd={this.addItem} onIncrement={this.handleIncrement} onDecrement={this.handleDecrement} onDelete={this.handleDelete} />
       </>
     );
   }

@@ -6,11 +6,7 @@ class Habits extends Component {
     handleKeyDown = (event) => {
         event.key === 'Enter' && this.addItem();
     }
-    handleReset = () => {
-        const habits = this.props.habits;
-        habits.forEach(habit => habit.count = 0);
-        this.setState({ habits });
-    }
+    handleReset = () => { this.props.onReset(); }
     render() {
         return (
             <>
